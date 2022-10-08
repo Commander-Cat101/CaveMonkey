@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <RootNamespace>CaveMonkeyV2</RootNamespace>
+        <Configurations>Debug;Release</Configurations>
+        <Nullable>enable</Nullable>
+        <AssemblyName>CaveMonkeyV2</AssemblyName>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <Optimize>False</Optimize>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <Optimize>True</Optimize>
+        <DebugType>none</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\BagOfRocks-Icon.png" />
+      <None Remove="Assets\BetterAccuracy-Icon.png" />
+      <None Remove="Assets\BigClub-Icon.png" />
+      <None Remove="Assets\CaveMonkey-Icon.png" />
+      <None Remove="Assets\CaveMonkey-Portrait.png" />
+      <None Remove="Assets\DeeperTrap-Icon.png" />
+      <None Remove="Assets\FasterClub-Icon.png" />
+      <None Remove="Assets\HeavyThump-Icon.png" />
+      <None Remove="Assets\MoabTrap-Icon.png" />
+      <None Remove="Assets\PokeyClub-Icon.png" />
+      <None Remove="Assets\RockDisplay.png" />
+      <None Remove="Assets\RockRifle-Icon.png" />
+      <None Remove="Assets\SharperRock-Icon.png" />
+      <None Remove="Assets\SplinterDisplay.png" />
+      <None Remove="Assets\Splinters-Icon.png" />
+      <None Remove="Assets\StunningThud-Icon.png" />
+      <None Remove="Assets\TheBigBang-Icon.png" />
+      <None Remove="Assets\Trap-Icon.png" />
+      <None Remove="Assets\TrapFullDisplay.png" />
+      <None Remove="Properties\Untitled drawing (12).png" />
+    </ItemGroup>
+
+    <Import Project="..\btd6.targets" />
+</Project>
