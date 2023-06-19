@@ -2,30 +2,27 @@ using MelonLoader;
 using BTD_Mod_Helper;
 using CaveMonkeyV2;
 using BTD_Mod_Helper.Api.Enums;
-using Assets.Scripts.Models.Towers;
 using BTD_Mod_Helper.Api.Towers;
 using BTD_Mod_Helper.Extensions;
-using Assets.Scripts.Models.Towers.Weapons.Behaviors;
-using Assets.Scripts.Models.Towers.Projectiles.Behaviors;
-using Assets.Scripts.Simulation.Towers.Projectiles.Behaviors;
-using Assets.Scripts.Models.Audio;
 using System.Media;
-using Assets.Scripts.Unity.Towers.Projectiles.Behaviors;
 using System.IO;
-using Assets.Scripts.Utils;
-using Assets.Scripts.Unity;
 using System.Security.Policy;
-using static Assets.Scripts.Models.ServerEvents.Coop;
-using Assets.Scripts.Unity.Display;
 using BTD_Mod_Helper.Api.Display;
-using Assets.Scripts.Models.Towers.Behaviors.Attack;
-using Assets.Scripts.Models.TowerSets;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Models.Towers.Behaviors.Emissions;
 using UnityEngine.UIElements;
-using Assets.Scripts.Models.Towers.Filters;
-using Assets.Scripts.Models.Towers.Behaviors;
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using TimeTraveler.Displays.Projectiles;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Models.TowerSets;
+using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Display;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
 
 [assembly: MelonInfo(typeof(CaveMonkeyV2.CaveMonkeyV2), ModHelperData.Name, ModHelperData.Version, ModHelperData.RepoOwner)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
@@ -78,7 +75,7 @@ public class CaveMonkeyV2 : BloonsTD6Mod
 public class CaveMonkey : ModTower
 {
 
-    public override string TowerSet => TowerSetType.Magic;
+    public override TowerSet TowerSet => TowerSet.Magic;
     public override string BaseTower => TowerType.CaveMonkey;
     public override int Cost => 450;
     public override int TopPathUpgrades => 5;
@@ -86,7 +83,7 @@ public class CaveMonkey : ModTower
     public override int BottomPathUpgrades => 5;
     public override bool DontAddToShop => false;
     public override string Description => "The Cave Monkey joined the game";
-
+    public override ParagonMode ParagonMode => ParagonMode.Base555;
     public override void ModifyBaseTowerModel(TowerModel towerModel)
     {
         towerModel.GetAttackModel().weapons[0].projectile = Game.instance.model.GetTowerFromId("Sauda 3").GetAttackModel().weapons[0].projectile.Duplicate();
@@ -378,7 +375,7 @@ public class BagOfRocks : ModUpgrade<CaveMonkey>
             {
                 var proj = attacks.weapons[0].projectile;
                 attacks.weapons[0].Rate *= .5f;
-                attacks.weapons[0].emission = new ArcEmissionModel("ArcEmissionModel_", 4, 0, 20, null, false);
+                attacks.weapons[0].emission = new ArcEmissionModel("ArcEmissionModel_", 4, 0, 20, null, false, false);
             }
 
         }
